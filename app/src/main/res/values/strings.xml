@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">ISSCodingChallenge</string>
+    <string name="text_get_coordinates">Get Coordinates</string>
+    <string name="action_github">GitHub</string>
+    <string name="rationale_location">This app needs access to your location to know where you are.</string>
+    <string name="permission_granted">Permission Granted</string>
+    <string name="permission_denied">Permission Denied</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="duration">Duration:</string>
+    <string name="time">Time:</string>
+    <string name="seconds">seconds</string>
+    <string name="returned_from_app_settings_to_activity">
+        Returned from app settings to MainActivity with the following permissions:
+        \nLocation &amp; Contacts: %s
+    </string>
+</resources>
