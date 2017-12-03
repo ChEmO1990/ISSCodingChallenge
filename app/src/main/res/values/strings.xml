@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ISSCodingChallenge</string>
+    <string name="app_name">ISSChallenge</string>
     <string name="text_get_coordinates">Get Coordinates</string>
     <string name="action_github">GitHub</string>
     <string name="rationale_location">This app needs access to your location to know where you are.</string>
