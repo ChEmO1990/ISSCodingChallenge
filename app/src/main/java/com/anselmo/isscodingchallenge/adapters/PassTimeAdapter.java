@@ -13,6 +13,10 @@ import com.anselmo.isscodingchallenge.utils.TimeStampUtil;
 
 /**
  * Created by Anselmo on 12/3/2017.
+ *
+ * No much to say here. Simple ViewHolder pattern.
+ *
+ * Could to be better using a view injection library like ButterKnife.
  */
 public class PassTimeAdapter extends RecyclerView.Adapter<PassTimeAdapter.PassTimeHolder> {
     private Context mContext;
@@ -44,7 +48,7 @@ public class PassTimeAdapter extends RecyclerView.Adapter<PassTimeAdapter.PassTi
     public void onBindViewHolder(PassTimeHolder holder, int position) {
         Response response = model.getResponse().get(position);
         holder.duration.setText( mContext.getString(R.string.duration) + " " + response.getDuration() / 60 +  " " + mContext.getString(R.string.seconds));
-        holder.time.setText( mContext.getString(R.string.time) + " " + TimeStampUtil.getDateFromTimeStamp(1512267640));
+        holder.time.setText( mContext.getString(R.string.time) + " " + TimeStampUtil.getDateFromTimeStamp(response.getRisetime()));
     }
 
     @Override

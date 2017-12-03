@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 import com.anselmo.isscodingchallenge.R;
 import com.anselmo.isscodingchallenge.api.ISSService;
@@ -31,9 +30,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     private static final String LOCATION_PERMISSION = Manifest.permission.ACCESS_FINE_LOCATION;
     private static final int RC_LOCATION_PERM = 124;
 
+    //This I don't like. Dependency injection using dagger 2 would be the best
     private Retrofit mRetrofit;
     private ISSService mApi;
 
+    /**
+     * It had would good idea to use view injection library -ButterKnife
+     * But that make the final apk more heavy and I had would have that make changes in gradle file,
+     * proguard, etc... Too much time ;(
+     */
     private Button btnGetCoordinates;
     private Toolbar mToolBar;
 
@@ -47,14 +52,37 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         btnGetCoordinates = (Button) findViewById(R.id.btnGetCoordinates);
         btnGetCoordinates.setOnClickListener(this);
 
+        /**
+         * --WARNING--
+         * Never do that below. It's the worst thing that you can do. Why?
+         *
+         * Simple: It's not maintainable and testable. In a future if I need to change anything I will need to change all classes
+         * that needs make http requests. Also its much spend of memory and resources.
+         *
+         * Other best choice?
+         *
+         * Yes! In the personal I like to use the following frameworks to try to obtain a clean architecture:
+         * -Retrofit
+         * -Dagger 2
+         * -RxJava/RxAndroid
+         *
+         * If you get join all those frameworks yours apps would be great
+         *
+         * And MVP pattern to separate business logic from views(Activities).
+         */
         mRetrofit = new Retrofit.Builder()
                 .baseUrl("http://api.open-notify.org/")
                 .addConverterFactory(GsonConverterFactory.create(new GsonBuilder().setLenient().create()))
                 .build();
 
         mApi = mRetrofit.create(ISSService.class);
+        //-----------------------------------------
     }
 
+    /**
+     * I don't had much time and so.... I have used a very tested and great library to handle the permission on runtime...
+     * In the real life with a project I prefer use only the sdk android.
+     */
     @AfterPermissionGranted(RC_LOCATION_PERM)
     public void tryToGetCoordinates() {
         if (hasLocationPermission()) {

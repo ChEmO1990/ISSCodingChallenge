@@ -1,13 +1,11 @@
 package com.anselmo.isscodingchallenge.ui.base;
 
 import android.content.Intent;
-import android.content.res.TypedArray;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-
 import com.anselmo.isscodingchallenge.R;
 
 /**
@@ -33,7 +31,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch ( item.getItemId() ) {
             case R.id.action_github:
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com"));
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/ChEmO1990/ISSCodingChallenge"));
                 startActivity(browserIntent);
                 break;
         }

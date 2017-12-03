@@ -11,6 +11,17 @@ import retrofit2.http.Query;
  */
 
 public interface ISSService {
+    /**
+     * This function return a simple callback retrofit.
+     *
+     * This is very very basic and I don't like to work in this way, but I don't have much time.
+     * A good approaching  would be to use a RxAndroid/RxJava and return an Observable and then
+     * could do a lot of things with the observable such as: filter results, transform objects, etc.
+     *
+     * @param lat - Current latitude
+     * @param lon - Current longitude
+     * @return A retrofit Callback
+     */
     @GET("iss-pass.json")
     Call<ISSResponse> getPasses(@Query("lat") double lat, @Query("lon") double lon);
 }

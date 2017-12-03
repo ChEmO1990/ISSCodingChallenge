@@ -9,6 +9,13 @@ import java.util.Date;
  */
 
 public class TimeStampUtil {
+
+    /**
+     * Return a formatted date
+     *
+     * @param timestamp - Current timestamp
+     * @return CharSequence that represent a date
+     */
     public static CharSequence getDateFromTimeStamp(long timestamp) {
         Calendar c = Calendar.getInstance();
         c.setTimeInMillis(timestamp * 1000L);
